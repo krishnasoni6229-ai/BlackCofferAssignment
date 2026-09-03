@@ -1,51 +1,174 @@
-# Welcome to your Expo app 👋
+# 📱 BlackCoffer - Social Media & Discovery App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern, high-performance, and responsive cross-platform mobile application built with **React Native**, **Expo SDK 57**, **Expo Router**, and **TypeScript**. Designed with a modular architecture, centralized theme management, and full responsiveness across compact phones, large devices, tablets, and web.
 
-## Get started
+---
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+- 🧭 **Discover Feed**: Categorized content discovery feed with dynamic topic filtering (All, Technology, Entertainment, Sports, Health, Business, Lifestyles, Government).
+- 📰 **Interactive Post Cards**:
+  - High-resolution media presentation with aspect-ratio preservation.
+  - Interactive Like, Share, and Comment handlers.
+  - One-tap Follow / Following toggling with smooth transitions.
+  - Location tags and view count indicators.
+- 👤 **Profile Dashboard**:
+  - User identity, location, and biography section.
+  - Dynamic metrics tracker (Feed, Followers, Following, Blocked).
+  - Drafts and Viewing History switcher with custom empty states.
+- 🎨 **Centralized Design System (`theme.config.ts`)**:
+  - Unified color palettes, typography scales, spacing tokens, border radii, and elevation shadows.
+  - Responsive layout utilities (`isTablet()`, scale calculations, and content width caps).
+- 📐 **Adaptive & Responsive Layout**:
+  - Safe-area aware layouts adapted for iOS home indicator bars and Android navigation gestures.
+  - Auto-centering and container width limits for tablets and iPads.
+- 🍔 **Custom Drawer & Tab Navigation**: Seamless navigation powered by Expo Router with custom branded header and drawer sidebar.
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠 Tech Stack
 
-In the output, you'll find options to open the app in a
+| Technology | Description |
+| :--- | :--- |
+| **Framework** | [React Native 0.86](https://reactnative.dev/) |
+| **Platform** | [Expo SDK 57](https://expo.dev/) (Latest Stable) |
+| **Routing** | [Expo Router](https://docs.expo.dev/router/introduction/) (File-based routing) |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) |
+| **Package Manager** | [Yarn](https://yarnpkg.com/) (with `node-modules` linker) |
+| **UI Components** | Custom Modular Component Library |
+| **Icons** | [@expo/vector-icons](https://icons.expo.fyi/) (FontAwesome, Ionicons, Octicons, EvilIcons, Fontisto) |
+| **Images** | [expo-image](https://docs.expo.dev/versions/latest/sdk/image/) (High-performance caching & transitions) |
+| **Build Tooling** | [EAS Build](https://docs.expo.dev/build/introduction/) & Expo CLI |
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📂 Project Structure
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```text
+├── app/                          # File-based routing & navigation
+│   ├── (drawer)/                 # Drawer navigation group
+│   │   ├── (tabs)/               # Bottom tabs navigation group
+│   │   │   ├── _layout.tsx       # Tab bar configuration & safe area handling
+│   │   │   ├── index.tsx         # Discover / Feed screen
+│   │   │   └── profile.tsx       # User Profile screen
+│   │   └── _layout.tsx           # Custom drawer sidebar & layout
+│   └── _layout.tsx               # Root application layout
+├── assets/                       # Static media, icons, and fonts
+├── src/
+│   ├── components/
+│   │   ├── customHeader.tsx      # Branded adaptive header
+│   │   └── ui/                   # Reusable UI component library
+│   │       ├── avatar.tsx        # Avatar with fallback initials
+│   │       ├── button.tsx        # Multi-variant button (primary, outline, ghost, danger)
+│   │       ├── categoryFilter.tsx# Horizontal filter pill bar
+│   │       ├── emptyState.tsx    # Clean placeholder empty states
+│   │       ├── postCard.tsx      # Responsive interactive post card
+│   │       └── statBox.tsx       # Profile metric statistics box
+│   ├── config/
+│   │   └── theme.config.ts       # Central theme tokens, colors & responsive helpers
+│   └── staticData/
+│       └── postData.ts           # Mock feed dataset & types
+├── .yarnrc.yml                   # Yarn configuration
+├── app.json                      # Expo application manifest
+├── eas.json                      # EAS Build profiles
+├── package.json                  # Dependencies & scripts
+└── tsconfig.json                 # TypeScript configuration
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 🚀 Getting Started
 
-To learn more about developing your project with Expo, look at the following resources:
+### Prerequisites
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- [Node.js](https://nodejs.org/) (v18 or newer recommended)
+- [Yarn](https://yarnpkg.com/)
+- [Expo Go](https://expo.dev/go) app installed on your physical device (iOS / Android) or a simulator
 
-## Join the community
+### Installation
 
-Join our community of developers creating universal apps.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/krishnasoni6229-ai/BlackCofferAssignment.git
+   cd BlackCofferAssignment
+   ```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-# blackCoffer-Assignment
+2. **Install dependencies:**
+   ```bash
+   yarn install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   yarn start
+   ```
+
+---
+
+## 📱 Running the App
+
+After running `yarn start`, press one of the following in your terminal:
+
+- `i` — Open in **iOS Simulator**
+- `a` — Open in **Android Emulator / Connected Device**
+- `w` — Open in **Web Browser**
+- `r` — Reload the Metro bundler
+- `c` — Show terminal QR code (for physical device scanning with Expo Go)
+
+---
+
+## 📦 Building for Production
+
+### EAS Cloud Build (Recommended)
+
+```bash
+# Configure EAS project (first time only)
+npx eas-cli build:configure
+
+# Build standalone Android APK (Direct installation)
+npx eas-cli build -p android --profile preview
+
+# Build Android App Bundle (.aab for Google Play Store)
+npx eas-cli build -p android --profile production
+
+# Build iOS Simulator / Ad-hoc IPA
+npx eas-cli build -p ios --profile preview
+```
+
+### Local Native Prebuild
+
+```bash
+# Generate native android/ and ios/ folders
+npx expo prebuild
+
+# Run locally on Android
+npx expo run:android
+
+# Run locally on iOS
+npx expo run:ios
+```
+
+---
+
+## 🎨 Theme & Customization
+
+All design tokens are centralized in [`src/config/theme.config.ts`](./src/config/theme.config.ts):
+
+- **Colors**: Easily customize brand primary, accents, surfaces, and text tones.
+- **Typography**: Change system font presets, weights, and sizes.
+- **Spacing & Radii**: Update padding, margins, and rounded corner tokens globally.
+- **Breakpoints**: Customize tablet and desktop viewport thresholds.
+
+---
+
+## 👤 Author
+
+**Krishna Soni**
+- Location: Indore, Madhya Pradesh
+- GitHub: [@krishnasoni6229-ai](https://github.com/krishnasoni6229-ai)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
