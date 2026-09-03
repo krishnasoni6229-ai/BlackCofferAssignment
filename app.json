@@ -27,7 +27,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/icons/BWstoryLogo.png",
+          "image": "./assets/images/splash-icon.png",
           "imageWidth": 260,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
