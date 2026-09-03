@@ -159,6 +159,37 @@ All design tokens are centralized in [`src/config/theme.config.ts`](./src/config
 - **Spacing & Radii**: Update padding, margins, and rounded corner tokens globally.
 - **Breakpoints**: Customize tablet and desktop viewport thresholds.
 
+## 💡 Ideas to Improve It Further
+
+Here are key architectural, performance, and feature enhancements to take this application to production scale:
+
+### 1. ⚡ Performance & State Management
+- **TanStack Query (React Query) / RTK Query**: Implement smart server-state caching, automatic background refetching, and pagination (`useInfiniteQuery`) for endless feed scrolling.
+- **FlashList (by Shopify)**: Replace `FlatList` with `@shopify/flash-list` for 5x–10x recycling performance and 60 FPS smooth scrolling on low-end Android devices.
+- **Zustand / Redux Toolkit**: Introduce global client state management for user authentication sessions, bookmarking, and instant optimistic UI updates (e.g. instant like counter increment).
+
+### 2. 🔍 Advanced Search & Real-Time Filtering
+- **Debounced Global Search Bar**: Add a full-text search overlay in `CustomHeader` with keyword matching against post titles, descriptions, and user locations.
+- **Multi-Filter Modal**: Enable combined filtering (e.g. by Category + Location radius + Date range).
+
+### 3. 💬 Comments, Media & Rich Interactions
+- **Bottom Sheet Comments Modal**: Interactive comments section using `@gorhom/bottom-sheet` with reply threads and nested mentions.
+- **Multi-Media Carousel & Video Player**: Support multiple images per post via swipeable carousels, pinch-to-zoom (`react-native-image-zoom-viewer`), and short video clips using `expo-video` / `expo-av`.
+- **Haptic Feedback**: Add micro-haptics (`expo-haptics`) on like, share, bookmark, and tab switches.
+
+### 4. 🌐 Offline Mode & Local Persistence
+- **WatermelonDB / MMKV Storage**: High-speed local database caching so users can view previously fetched feeds, drafts, and profiles even in low/no connectivity.
+- **Optimistic Offline Sync**: Queue likes, comments, and post drafts offline, syncing automatically when network connection is restored with `@react-native-community/netinfo`.
+
+### 5. 🔐 Authentication & Backend Integration
+- **Auth Flow**: Implement JWT / OAuth 2.0 (Google, Apple Sign-In, Email/Password) with Supabase or Firebase Auth.
+- **Push Notifications**: Real-time push notifications using `expo-notifications` for follower updates, likes, and trending topics.
+
+### 6. 🧪 Automated Testing & CI/CD Pipeline
+- **Unit & Component Testing**: Jest + `@testing-library/react-native` for component testing and business logic validation.
+- **End-to-End (E2E) Testing**: Maestro or Detox automated tests for cross-platform user flow validation.
+- **GitHub Actions CI/CD**: Automated linting, type-checking, and EAS preview builds on pull requests.
+
 ---
 
 ## 👤 Author
@@ -172,3 +203,4 @@ All design tokens are centralized in [`src/config/theme.config.ts`](./src/config
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
+
