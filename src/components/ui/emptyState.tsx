@@ -1,17 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, ViewStyle, StyleProp } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import theme from '@/src/config/theme.config';
 import Button from '@/src/components/ui/button';
+import { EmptyStateProps } from '@/src/types';
 
-export interface EmptyStateProps {
-    title?: string;
-    description?: string;
-    iconName?: keyof typeof Ionicons.glyphMap;
-    actionLabel?: string;
-    onAction?: () => void;
-    style?: StyleProp<ViewStyle>;
-}
+export type { EmptyStateProps };
 
 export const EmptyState: React.FC<EmptyStateProps> = ({
     title = 'No items found',

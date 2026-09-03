@@ -12,11 +12,12 @@ import Avatar from '@/src/components/ui/avatar';
 import StatBox from '@/src/components/ui/statBox';
 import EmptyState from '@/src/components/ui/emptyState';
 import theme from '@/src/config/theme.config';
+import { ProfileTabType } from '@/src/types';
 
 const ProfileTab: React.FC = () => {
     const { width: windowWidth } = useWindowDimensions();
     const isTabletDevice = windowWidth >= theme.breakpoints.tablet;
-    const [activeTab, setActiveTab] = useState<'drafts' | 'history'>('drafts');
+    const [activeTab, setActiveTab] = useState<ProfileTabType>('drafts');
 
     return (
         <ScrollView

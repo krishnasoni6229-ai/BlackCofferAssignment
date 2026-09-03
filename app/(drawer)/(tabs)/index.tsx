@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { StyleSheet, View, FlatList, StatusBar, Text } from 'react-native';
 import PostCard from '@/src/components/ui/postCard';
-import CategoryFilter, { CategoryItem } from '@/src/components/ui/categoryFilter';
+import CategoryFilter from '@/src/components/ui/categoryFilter';
+import { CategoryItem } from '@/src/types';
 import { PostData } from '@/src/staticData/postData';
 import theme from '@/src/config/theme.config';
 

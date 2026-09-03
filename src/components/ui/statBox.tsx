@@ -1,14 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, ViewStyle, StyleProp } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import theme from '@/src/config/theme.config';
+import { StatBoxProps } from '@/src/types';
 
-export interface StatBoxProps {
-    value: string | number;
-    label: string;
-    onPress?: () => void;
-    active?: boolean;
-    style?: StyleProp<ViewStyle>;
-}
+export type { StatBoxProps };
 
 export const StatBox: React.FC<StatBoxProps> = ({
     value,

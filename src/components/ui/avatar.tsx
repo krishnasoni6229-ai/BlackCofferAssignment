@@ -1,18 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, Text, ViewStyle, StyleProp } from 'react-native';
-import { Image, ImageSource } from 'expo-image';
+import { StyleSheet, View, Text, ViewStyle } from 'react-native';
+import { Image } from 'expo-image';
 import theme from '@/src/config/theme.config';
+import { AvatarProps, AvatarSize } from '@/src/types';
 
-export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
-export interface AvatarProps {
-    source?: string | number | ImageSource;
-    name?: string;
-    size?: AvatarSize | number;
-    borderWidth?: number;
-    borderColor?: string;
-    style?: StyleProp<ViewStyle>;
-}
+export type { AvatarProps, AvatarSize };
 
 const sizeMap: Record<AvatarSize, number> = {
     xs: 28,

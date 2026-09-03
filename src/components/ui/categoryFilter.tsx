@@ -1,20 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, ViewStyle, StyleProp } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import Button from '@/src/components/ui/button';
 import theme from '@/src/config/theme.config';
+import { CategoryItem, CategoryFilterProps } from '@/src/types';
 
-export interface CategoryItem {
-    id: string;
-    title: string;
-    icon?: React.ReactNode;
-}
-
-export interface CategoryFilterProps {
-    categories: CategoryItem[];
-    activeId: string;
-    onSelect: (id: string) => void;
-    containerStyle?: StyleProp<ViewStyle>;
-}
+export type { CategoryItem, CategoryFilterProps };
 
 export const CategoryFilter: React.FC<CategoryFilterProps> = ({
     categories,

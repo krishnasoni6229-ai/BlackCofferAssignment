@@ -1,6 +1,6 @@
-import { postCardProps } from "@/src/components/ui/postCard";
+import { PostItem } from "@/src/types";
 
-export const PostData: postCardProps[] = [
+export const PostData: PostItem[] = [
     {
         id: '1',
         name: 'testing',

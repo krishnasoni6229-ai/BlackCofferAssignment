@@ -10,24 +10,31 @@ import { EvilIcons, Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
 import theme from '@/src/config/theme.config';
+import { CustomHeaderProps } from '@/src/types';
 
-export interface CustomHeaderProps {
-    onSearchPress?: () => void;
-}
+export type { CustomHeaderProps };
 
-const CustomHeader: React.FC<CustomHeaderProps> = ({ onSearchPress }) => {
+const CustomHeader: React.FC<CustomHeaderProps> = ({ onSearchPress, onMenuPress }) => {
     const navigation = useNavigation<any>();
     const { width: windowWidth } = useWindowDimensions();
 
     // Responsive logo width calculation
     const logoWidth = Math.min(260, Math.max(160, windowWidth * 0.55));
 
+    const handleMenu = () => {
+        if (onMenuPress) {
+            onMenuPress();
+        } else {
+            navigation.dispatch({ type: 'OPEN_DRAWER' });
+        }
+    };
+
     return (
         <SafeAreaView style={styles.safeArea} edges={['top']}>
             <View style={styles.header}>
                 {/* Menu Button */}
                 <TouchableOpacity
-                    onPress={() => navigation.dispatch({ type: 'OPEN_DRAWER' })}
+                    onPress={handleMenu}
                     style={styles.iconButton}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     accessibilityLabel="Open drawer menu"

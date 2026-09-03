@@ -6,31 +6,12 @@ import {
     ActivityIndicator,
     ViewStyle,
     TextStyle,
-    StyleProp,
     View,
 } from 'react-native';
 import theme from '@/src/config/theme.config';
+import { ButtonPropsItem, ButtonVariant, ButtonSize } from '@/src/types';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
-export type ButtonSize = 'sm' | 'md' | 'lg';
-
-export interface ButtonPropsItem {
-    id?: string;
-    title: string;
-    variant?: ButtonVariant;
-    size?: ButtonSize;
-    backgroundColor?: string;
-    textColor?: string;
-    borderColor?: string;
-    onPress?: () => void;
-    disabled?: boolean;
-    loading?: boolean;
-    fullWidth?: boolean;
-    icon?: React.ReactNode;
-    style?: StyleProp<ViewStyle>;
-    textStyle?: StyleProp<TextStyle>;
-    activeOpacity?: number;
-}
+export type { ButtonPropsItem, ButtonVariant, ButtonSize };
 
 const Button: React.FC<ButtonPropsItem> = ({
     title,

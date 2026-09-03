@@ -11,21 +11,12 @@ import { Image } from 'expo-image';
 import { EvilIcons, FontAwesome, Octicons } from '@expo/vector-icons';
 import Button from '@/src/components/ui/button';
 import theme from '@/src/config/theme.config';
+import { PostCardProps, postCardProps } from '@/src/types';
 
-export interface postCardProps {
-    id: string;
-    name: string;
-    location: string;
-    imageUrl: string;
-    postDate: string;
-    postContent: string;
-    views: string;
-    discription: string;
-    fullLocation: string;
-    category?: string;
-}
+export type { PostCardProps, postCardProps };
 
-const PostCard: React.FC<postCardProps> = ({
+const PostCard: React.FC<PostCardProps> = ({
+    id,
     name,
     location,
     imageUrl,
@@ -34,6 +25,10 @@ const PostCard: React.FC<postCardProps> = ({
     views,
     discription,
     fullLocation,
+    onLikePress,
+    onFollowPress,
+    onSharePress,
+    onCommentPress,
 }) => {
     const { width: windowWidth } = useWindowDimensions();
     // Compute exact card width so layout engine never miscalculates percentage widths
@@ -42,7 +37,34 @@ const PostCard: React.FC<postCardProps> = ({
     const [activeHeart, setActiveHeart] = useState(false);
     const [activeFollower, setActiveFollower] = useState(false);
 
+    const handleLike = () => {
+        const nextState = !activeHeart;
+        setActiveHeart(nextState);
+        if (onLikePress) onLikePress(id, nextState);
+    };
+
+    const handleFollow = () => {
+        const nextState = !activeFollower;
+        setActiveFollower(nextState);
+        if (onFollowPress) onFollowPress(id, nextState);
+    };
+
     const handleShare = async () => {
+        if (onSharePress) {
+            onSharePress({
+                id,
+                name,
+                location,
+                imageUrl,
+                postDate,
+                postContent,
+                views,
+                discription,
+                fullLocation,
+            });
+            return;
+        }
+
         try {
             await Share.share({
                 message: `${name}: ${discription}\n${imageUrl}`,
@@ -50,6 +72,10 @@ const PostCard: React.FC<postCardProps> = ({
         } catch {
             // handle error silently
         }
+    };
+
+    const handleComment = () => {
+        if (onCommentPress) onCommentPress(id);
     };
 
     return (
@@ -77,7 +103,7 @@ const PostCard: React.FC<postCardProps> = ({
                     size="sm"
                     backgroundColor={activeFollower ? '#154454' : '#ffffff'}
                     textColor={activeFollower ? '#ffffff' : '#154454'}
-                    onPress={() => setActiveFollower((prev) => !prev)}
+                    onPress={handleFollow}
                     style={styles.followBtn}
                 />
             </View>
@@ -109,7 +135,7 @@ const PostCard: React.FC<postCardProps> = ({
             {/* Action Buttons: Like, Share, Comment */}
             <View style={styles.actionsRow}>
                 <TouchableOpacity
-                    onPress={() => setActiveHeart((prev) => !prev)}
+                    onPress={handleLike}
                     activeOpacity={0.7}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     style={styles.actionBtn}
@@ -131,6 +157,7 @@ const PostCard: React.FC<postCardProps> = ({
                 </TouchableOpacity>
 
                 <TouchableOpacity
+                    onPress={handleComment}
                     activeOpacity={0.7}
                     hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     style={styles.actionBtn}
