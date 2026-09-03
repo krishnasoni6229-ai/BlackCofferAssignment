@@ -60,6 +60,24 @@ export interface CategoryFilterProps {
     containerStyle?: StyleProp<ViewStyle>;
 }
 
+export interface ChipProps {
+    id?: string;
+    label: string;
+    selected?: boolean;
+    active?: boolean;
+    icon?: React.ReactNode;
+    badge?: string | number;
+    size?: 'sm' | 'md' | 'lg';
+    onPress?: () => void;
+    disabled?: boolean;
+    style?: StyleProp<ViewStyle>;
+    textStyle?: StyleProp<TextStyle>;
+    activeBackgroundColor?: string;
+    inactiveBackgroundColor?: string;
+    activeTextColor?: string;
+    inactiveTextColor?: string;
+}
+
 // ==========================================
 // 3. UI Component Types
 // ==========================================

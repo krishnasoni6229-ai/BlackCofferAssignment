@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
-import Button from '@/src/components/ui/button';
+import Chip from '@/src/components/ui/chip';
 import theme from '@/src/config/theme.config';
 import { CategoryItem, CategoryFilterProps } from '@/src/types';
 
@@ -20,22 +20,17 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.listContainer}
-                renderItem={({ item }) => {
-                    const isActive = activeId === item.id;
-                    return (
-                        <Button
-                            id={item.id}
-                            title={item.title}
-                            size="sm"
-                            backgroundColor={isActive ? theme.colors.primary : theme.colors.surface}
-                            textColor={isActive ? theme.colors.textInverse : theme.colors.primary}
-                            borderColor={isActive ? theme.colors.primary : theme.colors.borderDark}
-                            onPress={() => onSelect(item.id)}
-                            style={styles.chip}
-                            icon={item.icon}
-                        />
-                    );
-                }}
+                renderItem={({ item }) => (
+                    <Chip
+                        id={item.id}
+                        label={item.title}
+                        size="sm"
+                        selected={activeId === item.id}
+                        onPress={() => onSelect(item.id)}
+                        icon={item.icon}
+                        style={styles.chip}
+                    />
+                )}
             />
         </View>
     );
