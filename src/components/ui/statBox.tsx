@@ -20,35 +20,41 @@ export const StatBox: React.FC<StatBoxProps> = ({
             onPress={onPress}
             activeOpacity={0.7}
         >
-            <Text style={[styles.number, active && styles.activeText]}>{value}</Text>
-            <Text style={styles.label}>{label}</Text>
+            <Text style={[styles.number, active && styles.activeText]} numberOfLines={1}>
+                {value}
+            </Text>
+            <Text style={styles.label} numberOfLines={1}>
+                {label}
+            </Text>
         </Component>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: theme.spacing.sm,
-        paddingHorizontal: theme.spacing.md,
-        borderRadius: theme.borderRadius.md,
-        minWidth: 65,
+        paddingVertical: 4,
+        paddingHorizontal: 2,
+        borderRadius: theme.borderRadius.sm,
+        minWidth: 0,
     },
     activeContainer: {
         backgroundColor: theme.colors.surfaceHighlight,
     },
     number: {
-        fontSize: theme.typography.fontSize.base,
+        fontSize: 15,
         fontWeight: theme.typography.fontWeight.bold,
         color: theme.colors.textPrimary,
         marginBottom: 2,
+        textAlign: 'center',
     },
     activeText: {
         color: theme.colors.primary,
     },
     label: {
-        fontSize: theme.typography.fontSize.xs,
+        fontSize: 11,
         color: theme.colors.textMuted,
         textAlign: 'center',
         fontWeight: theme.typography.fontWeight.medium,

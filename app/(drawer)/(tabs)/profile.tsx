@@ -190,17 +190,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        gap: theme.spacing.sm,
+        width: '100%',
+        gap: 6,
     },
     trashBtn: {
-        paddingHorizontal: theme.spacing.md,
+        paddingHorizontal: 10,
+        paddingVertical: 4,
     },
     statsRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         flex: 1,
+        minWidth: 0,
     },
     aboutCard: {
         minHeight: 280,
